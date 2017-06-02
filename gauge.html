@@ -1,0 +1,194 @@
+<html>
+    <head>
+        <title>Gauge</title>
+        <script src="raphael-2.1.4.min.js"></script>
+        <script src="justgage.js"></script>
+        <script type="text/css" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css"></script>
+    </head>
+    <body>
+       <div class="container">
+<form>
+    <div>
+        <label>Value :</label>
+        <input type="number" id="value">
+        <input type = "submit" id="abc">
+        </div>
+</form>
+        <ul id="values">
+        </ul>
+        
+           <div class="row">
+            <div class="col-md-3">
+               <div id="bigfella2" style="width:200px; height:120px"></div>  
+            </div>
+           </div>
+    </div>
+     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+
+    <script>
+        var i = 0; 
+        var g = new JustGage({
+        id: "bigfella2",
+        value: 0 ,
+        min: 0,
+        max: 100,
+        title: "Visitors"  
+      });
+   
+      var socket = io();
+      $('form').submit(function(){
+        socket.emit('value', $('#value').val());
+
+          return false;
+          
+      });
+      socket.on('value', function(amount){
+          $('#abc').click(function(){
+            $('#bigfella2').empty()
+            const a = $('#value').val();
+             if(a>60){
+                var g = new JustGage({
+                id: "bigfella2",
+                value: a ,
+                min: 60,
+                max: 100,
+                title: "Meter" })
+             } 
+           
+        else if(a>30){
+            $('#bigfella2').empty()
+                var g = new JustGage({
+                id: "bigfella2",
+                value: a ,
+                min: 30,
+                max: 60,
+                title: "Meter" })
+        }
+
+        else if(a<=30){
+            $('#bigfella2').empty()
+             var g = new JustGage({
+                id: "bigfella2",
+                value: a ,
+                min: 0,
+                max: 30,
+                title: "Meter" })
+          
+        }
+           
+           });
+      })
+
+    
+    </script>
+            <script>
+        var i = 0;
+      
+        var g = new JustGage({
+        id: "bigfella3",
+        value: 0 ,
+        min: 0,
+        max: 100,
+        title: "Visitors"  
+      });
+   
+      var socket = io();
+      $('form').submit(function(){
+        socket.emit('value', $('#value').val());
+
+          return false;
+          
+      });
+      socket.on('value', function(amount){
+          $('#abc').click(function(){
+            $('#bigfella3').empty()
+            const a = $('#value').val();
+             if(a>60){
+                var g = new JustGage({
+                id: "bigfella3",
+                value: a ,
+                min: 60,
+                max: 100,
+                title: "Meter" })
+             } 
+           
+        else if(a>30){
+            $('#bigfella3').empty()
+                var g = new JustGage({
+                id: "bigfella3",
+                value: a ,
+                min: 30,
+                max: 60,
+                title: "Meter" })
+        }
+
+        else if(a<=30){
+            $('#bigfella3').empty()
+             var g = new JustGage({
+                id: "bigfella3",
+                value: a ,
+                min: 0,
+                max: 30,
+                title: "Meter" })
+          
+        }
+           
+           });
+      })
+    </script>
+            <script>
+        var i = 0;
+        var g = new JustGage({
+        id: "bigfella4",
+        value: 0 ,
+        min: 0,
+        max: 100,
+        title: "Visitors"  
+      });
+   
+      var socket = io();
+      $('form').submit(function(){
+        socket.emit('value', $('#value').val());
+         return false;      
+      });
+      socket.on('value', function(amount){
+
+          $('#abc').click(function(){
+
+            $('#bigfella4').empty()
+            const a = $('#value').val();
+             if(a>60){
+                var g = new JustGage({
+                id: "bigfella4",
+                value: a ,
+                min: 60,
+                max: 100,
+                title: "Meter" })
+             } 
+           
+        else if(a>30){
+            $('#bigfella').empty()
+                var g = new JustGage({
+                id: "bigfella4",
+                value: a ,
+                min: 30,
+                max: 60,
+                title: "Meter" })
+        }
+      else if(a<=30){
+            $('#bigfella4').empty()
+             var g = new JustGage({
+                id: "bigfella4",
+                value: a ,
+                min: 0,
+                max: 30,
+                title: "Meter" })
+          
+        }
+           
+           });
+      })
+    </script>
+    </body>
+</html>
